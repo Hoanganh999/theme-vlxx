@@ -1,10 +1,10 @@
 {
-    "name": "ggg3/theme-vlxx",
+    "name": "apiphimcc/theme-vlxx",
     "description": "Ophim's vlxx theme",
     "type": "library",
     "authors": [
         {
-            "name": "ggg3",
+            "name": "apiphimcc",
             "email": "admin@gmail.com"
         }
     ],
