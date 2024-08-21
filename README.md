@@ -1,27 +1,12 @@
-# THEME - MotChill 2023 - OPHIM CMS
+# THEME - Vlxx 2024 - OPHIM CMS
 
-## Demo
-### Trang Chủ
-![Alt text](https://i.ibb.co/KKmxz2s/MOTCHILL-INDEX.png "Home Page")
-
-### Trang Danh Sách Phim
-![Alt text](https://i.ibb.co/Wg5Pc20/MOTCHILL-CATALOG.png "Catalog Page")
-
-### Trang Thông Tin Phim
-![Alt text](https://i.ibb.co/557G7Kc/MOTCHILL-SINGLE.png "Single Page")
-
-### Trang Xem Phim
-![Alt text](https://i.ibb.co/S6By19h/MOTCHILL-EPISODE.png "Episode Page")
-
-## Requirements
-https://github.com/hacoidev/ophim-core
 
 ## Install
-1. Tại thư mục của Project: `composer require ophimcms/theme-motchill`
+1. Tại thư mục của Project: `composer require apiphimvip/theme-vlxz`
 2. Kích hoạt giao diện trong Admin Panel
 
 ## Update
-1. Tại thư mục của Project: `composer update ophimcms/theme-motchill`
+1. Tại thư mục của Project: `composer update apiphimvip/theme-vlxz`
 2. Re-Activate giao diện trong Admin Panel
 
 ## Document
@@ -40,7 +25,3 @@ https://github.com/hacoidev/ophim-core
     Top phim lẻ||type|single|view_week|desc|10|top_thumb
     Top phim bộ||type|series|view_week|desc|10|top_thumb
     ```
-
-### Custom View Blade
-- File blade gốc trong Package: `/vendor/ophimcms/theme-motchill/resources/views/thememotchill`
-- Copy file cần custom đến: `/resources/views/vendor/themes/thememotchill`
