@@ -2,11 +2,11 @@
 
 
 ## Install
-1. Tại thư mục của Project: `composer require apiphimvip/theme-vlxx`
+1. Tại thư mục của Project: `composer require hoanganh/theme-vlxx`
 2. Kích hoạt giao diện trong Admin Panel
 
 ## Update
-1. Tại thư mục của Project: `composer update apiphimvip/theme-vlxx`
+1. Tại thư mục của Project: `composer update hoanganh/theme-vlxx`
 2. Re-Activate giao diện trong Admin Panel
 
 ## Document
