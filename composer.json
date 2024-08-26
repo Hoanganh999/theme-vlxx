@@ -1,10 +1,10 @@
 {
-    "name": "apiphimcc/theme-vlxx",
+    "name": "hoanganh/theme-vlxx",
     "description": "Ophim's vlxx theme",
     "type": "library",
     "authors": [
         {
-            "name": "apiphimcc",
+            "name": "hoanganh",
             "email": "admin@gmail.com"
         }
     ],
