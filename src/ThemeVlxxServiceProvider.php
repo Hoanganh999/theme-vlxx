@@ -32,9 +32,9 @@ class ThemeVlxxServiceProvider extends ServiceProvider
     {
         config(['themes' => array_merge(config('themes', []), [
             'vlxx' => [
-                'name' => 'Vlxx',
+                'name' => 'Theme Vlxx',
                 'author' => 'contact.animehay@gmail.com',
-                'package_name' => 'ggg3/theme-vlxx',
+                'package_name' => 'hoanganh/theme-vlxx',
                 'publishes' => ['vlxx-assets'],
                 'preview_image' => '',
                 'options' => [
