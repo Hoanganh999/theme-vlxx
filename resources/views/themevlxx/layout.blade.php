@@ -59,7 +59,7 @@
                         trước, hoàn toàn không có thật, người xem tuyệt đối không bắt chước hành động trong phim, tránh vi
                         phạm pháp luật.</p>
                     <div style="font-size: 12px;text-align: center;color: #dadada;opacity: .8;">
-                        <p>© 2023 VLXX.COM</p>
+                        <p>© 2025 VLXX.COM</p>
                     </div>
                 </div>
             </footer>
