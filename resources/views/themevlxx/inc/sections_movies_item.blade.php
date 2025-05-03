@@ -2,8 +2,8 @@
     <a title="{{$movie->name}}"
         href="{{$movie->getUrl()}}">
         <img class="video-image lazyload" src="{{$movie->getPosterUrl()}}"
-            data-original="{{$movie->getPosterUrl()}}"
-            alt="{{$movie->name}}" style="">
+    data-original="{{$movie->getPosterUrl()}}"
+    alt="{{$movie->name}}" style="width: 640px; height: 480px;">
         <div class="ribbon">{{$movie->language}}</div>
     </a>
     <div class="video-name">
