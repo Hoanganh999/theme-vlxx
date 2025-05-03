@@ -4,7 +4,7 @@
         <img class="video-image lazyload" src="{{$movie->getPosterUrl()}}"
     data-original="{{$movie->getPosterUrl()}}"
     alt="{{$movie->name}}"
-    style="width: 210px; height: 126px; object-fit: cover; display: block;">
+    style="width: 200px; height: 120px; object-fit: cover; display: block;">
         <div class="ribbon">{{$movie->language}}</div>
     </a>
     <div class="video-name">
