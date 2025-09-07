@@ -38,8 +38,8 @@
             </div>
             <div class="clear"></div>
             
-    
-            <h4 class="title-h cor4">Danh sách tập</h4>
+    <div class="video-content">
+            <h4 class="title-h cor4">Danh sách tập:</h4>
 
 @foreach ($currentMovie->episodes->sortBy([['server', 'asc']])->groupBy('server') as $server => $data)
     <!-- Server tab -->
@@ -225,7 +225,9 @@
 }
 </style>
 
-<div class="video-content">
+
+    <h4 class="title-h cor4">Nội dung phim:</h4>
+    
     <div class="video-description">
         {!! $currentMovie->content !!}
     </div>
