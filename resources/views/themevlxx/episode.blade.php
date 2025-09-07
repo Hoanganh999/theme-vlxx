@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 .server-tab {
     padding: 8px 16px;
-    border: 1px solid #fff;
+    border: none;
     border-radius: 18px;
     background: #222;
     color: #bbb;
@@ -175,11 +175,11 @@ document.addEventListener("DOMContentLoaded", function () {
     transition: 0.2s;
 }
 .server-tab:hover {
-    background: #5D3E34;
+    background: #b93f35;
     color: #fff;
 }
 .server-tab.active {
-    background: #5D3E34;
+    background: #b93f35;
     color: #fff;
     font-weight: bold;
 }
@@ -208,12 +208,12 @@ document.addEventListener("DOMContentLoaded", function () {
     transition: 0.2s;
 }
 .episode-item a:hover {
-    background: #5D3E34;
+    background: #b93f35;
     color: #fff;
     transform: translateY(-2px);
 }
 .episode-item.active a {
-    background: #5D3E34;
+    background: #b93f35;
     color: #fff;
     font-weight: bold;
 }
