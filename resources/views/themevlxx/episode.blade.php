@@ -128,6 +128,107 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 </script>
+            <h4 class="title-h cor4">Danh sách tập</h4>
+
+@foreach ($currentMovie->episodes->sortBy([['server', 'asc']])->groupBy('server') as $server => $data)
+    <!-- Tab chọn server -->
+    <div class="server-tabs">
+        <a class="server-tab active">
+            <i class="fa fa-server"></i> {{ $server }}
+        </a>
+    </div>
+
+    <!-- Danh sách tập -->
+    <div class="player-list-box">
+        <ul class="episode-list">
+            @foreach ($data->sortBy('name', SORT_NATURAL)->groupBy('name') as $name => $item)
+                <li class="episode-item {{ $item->contains($episode) ? 'active' : '' }}">
+                    <a href="{{ $item->sortByDesc('type')->first()->getUrl() }}">
+                        <span>{{ $name }}</span>
+                        @if ($item->contains($episode))
+                            <em class="playing"><i></i><i></i><i></i><i></i></em>
+                        @endif
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+@endforeach
+
+<style>
+/* Tabs server */
+.server-tabs {
+    margin-bottom: 10px;
+}
+.server-tab {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #222;
+    border-radius: 6px;
+    margin-right: 8px;
+    color: #ccc;
+    font-size: 14px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+.server-tab:hover {
+    background: #ff6600;
+    color: #fff;
+}
+.server-tab.active {
+    background: #ff6600;
+    color: #fff;
+}
+
+/* Danh sách tập */
+.episode-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.episode-item {
+    flex: 0 0 auto;
+}
+.episode-item a {
+    display: block;
+    padding: 8px 12px;
+    background: #1a1a1a;
+    color: #ccc;
+    font-size: 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.episode-item a:hover {
+    background: #ff6600;
+    color: #fff;
+}
+.episode-item.active a {
+    background: #ff6600;
+    color: #fff;
+}
+
+/* Icon tập đang phát */
+.playing i {
+    display: inline-block;
+    width: 3px;
+    height: 10px;
+    margin: 0 1px;
+    background: #fff;
+    animation: equalizer 1s infinite ease-in-out;
+}
+.playing i:nth-child(2) { animation-delay: 0.2s; }
+.playing i:nth-child(3) { animation-delay: 0.4s; }
+.playing i:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes equalizer {
+    0%, 40%, 100% { transform: scaleY(0.3); }
+    20% { transform: scaleY(1); }
+}
+</style>
                 <div class="video-tags">
                     <div class="actress-tag">
                         {!! count($currentMovie->actors)
