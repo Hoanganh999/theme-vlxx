@@ -80,24 +80,26 @@
     cursor: pointer;
     border: none;
     border-radius: 20px;
-    background: #222;
+    background: transparent;
     color: #fff;
     font-size: 15px;
     font-weight: 500;
     transition: background 0.2s ease;
 }
 .toggle-btn:hover {
-    background: #333;
+    background: rgba(255,255,255,0.1);
 }
 
 /* icon mũi tên */
-.toggle-btn .arrow {
-    display: inline-block;
+.toggle-btn svg {
+    width: 16px;
+    height: 16px;
     margin-right: 6px;
     transition: transform 0.3s ease;
+    fill: #fff;
 }
-.toggle-btn.expanded .arrow {
-    transform: rotate(180deg); /* xoay mũi tên khi mở rộng */
+.toggle-btn.expanded svg {
+    transform: rotate(180deg);
 }
 </style>
 
@@ -106,7 +108,9 @@
         {!! $currentMovie->content !!}
     </div>
     <button class="toggle-btn">
-        <span class="arrow">⌄</span> 
+        <svg viewBox="0 0 24 24">
+            <path d="M7 10l5 5 5-5z"/>
+        </svg>
         <span class="text">Xem thêm</span>
     </button>
 </div>
