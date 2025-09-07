@@ -38,96 +38,7 @@
             </div>
             <div class="clear"></div>
             
-    <style>
-.video-content {
-    position: relative;
-    max-width: 600px;
-    color: #ddd;
-    font-size: 16px;
-}
-
-/* đoạn mô tả có hiệu ứng mờ */
-.video-description {
-    position: relative;
-    overflow: hidden;
-    max-height: 6em; /* khoảng 3 dòng */
-    line-height: 1.5em;
-    transition: max-height 0.3s ease;
-}
-.video-description::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3em;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-}
-.video-description.expanded {
-    max-height: none;
-}
-.video-description.expanded::after {
-    display: none;
-}
-
-/* nút xem thêm */
-.toggle-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px auto 0;
-    padding: 6px 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 20px;
-    background: transparent;
-    color: #fff;
-    font-size: 15px;
-    font-weight: 500;
-    transition: background 0.2s ease;
-}
-.toggle-btn:hover {
-    background: rgba(255,255,255,0.1);
-}
-
-/* icon mũi tên */
-.toggle-btn svg {
-    width: 16px;
-    height: 16px;
-    margin-right: 6px;
-    transition: transform 0.3s ease;
-    fill: #fff;
-}
-.toggle-btn.expanded svg {
-    transform: rotate(180deg);
-}
-</style>
-
-<div class="video-content">
-    <div class="video-description">
-        {!! $currentMovie->content !!}
-    </div>
-    <button class="toggle-btn">
-        <svg viewBox="0 0 24 24">
-            <path d="M7 10l5 5 5-5z"/>
-        </svg>
-        <span class="text">Xem thêm</span>
-    </button>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const desc = document.querySelector(".video-description");
-    const btn = document.querySelector(".toggle-btn");
-    const text = btn.querySelector(".text");
-
-    btn.addEventListener("click", function () {
-        const expanded = desc.classList.toggle("expanded");
-        btn.classList.toggle("expanded", expanded);
-        text.innerText = expanded ? "Rút gọn" : "Xem thêm";
-    });
-});
-</script>
+    
             <h4 class="title-h cor4">Danh sách tập</h4>
 
 @foreach ($currentMovie->episodes->sortBy([['server', 'asc']])->groupBy('server') as $server => $data)
@@ -241,6 +152,96 @@ document.addEventListener("DOMContentLoaded", function () {
     20% { transform: scaleY(1); }
 }
 </style>
+            <style>
+.video-content {
+    position: relative;
+    max-width: 600px;
+    color: #ddd;
+    font-size: 16px;
+}
+
+/* đoạn mô tả có hiệu ứng mờ */
+.video-description {
+    position: relative;
+    overflow: hidden;
+    max-height: 6em; /* khoảng 3 dòng */
+    line-height: 1.5em;
+    transition: max-height 0.3s ease;
+}
+.video-description::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3em;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+.video-description.expanded {
+    max-height: none;
+}
+.video-description.expanded::after {
+    display: none;
+}
+
+/* nút xem thêm */
+.toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto 0;
+    padding: 6px 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    background: transparent;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background 0.2s ease;
+}
+.toggle-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* icon mũi tên */
+.toggle-btn svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    transition: transform 0.3s ease;
+    fill: #fff;
+}
+.toggle-btn.expanded svg {
+    transform: rotate(180deg);
+}
+</style>
+
+<div class="video-content">
+    <div class="video-description">
+        {!! $currentMovie->content !!}
+    </div>
+    <button class="toggle-btn">
+        <svg viewBox="0 0 24 24">
+            <path d="M7 10l5 5 5-5z"/>
+        </svg>
+        <span class="text">Xem thêm</span>
+    </button>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const desc = document.querySelector(".video-description");
+    const btn = document.querySelector(".toggle-btn");
+    const text = btn.querySelector(".text");
+
+    btn.addEventListener("click", function () {
+        const expanded = desc.classList.toggle("expanded");
+        btn.classList.toggle("expanded", expanded);
+        text.innerText = expanded ? "Rút gọn" : "Xem thêm";
+    });
+});
+</script>
                 <div class="video-tags">
                     <div class="actress-tag">
                         {!! count($currentMovie->actors)
