@@ -41,19 +41,19 @@
     <style>
 .video-content {
     position: relative;
-    max-width: 600px; /* chỉnh theo ý */
+    max-width: 600px;
     color: #ddd;
     font-size: 16px;
 }
 
+/* đoạn mô tả có hiệu ứng mờ */
 .video-description {
     position: relative;
     overflow: hidden;
-    max-height: 6em; /* ~3-4 dòng */
+    max-height: 6em; /* khoảng 3 dòng */
     line-height: 1.5em;
     transition: max-height 0.3s ease;
 }
-
 .video-description::after {
     content: "";
     position: absolute;
@@ -63,22 +63,41 @@
     height: 3em;
     background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
 }
-
 .video-description.expanded {
     max-height: none;
 }
-
 .video-description.expanded::after {
     display: none;
 }
 
+/* nút xem thêm */
 .toggle-btn {
-    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto 0;
+    padding: 6px 16px;
     cursor: pointer;
-    background: none;
     border: none;
-    color: #007bff;
-    font-weight: bold;
+    border-radius: 20px;
+    background: #222;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background 0.2s ease;
+}
+.toggle-btn:hover {
+    background: #333;
+}
+
+/* icon mũi tên */
+.toggle-btn .arrow {
+    display: inline-block;
+    margin-right: 6px;
+    transition: transform 0.3s ease;
+}
+.toggle-btn.expanded .arrow {
+    transform: rotate(180deg); /* xoay mũi tên khi mở rộng */
 }
 </style>
 
@@ -86,17 +105,22 @@
     <div class="video-description">
         {!! $currentMovie->content !!}
     </div>
-    <button class="toggle-btn">Xem thêm</button>
+    <button class="toggle-btn">
+        <span class="arrow">⌄</span> 
+        <span class="text">Xem thêm</span>
+    </button>
 </div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const desc = document.querySelector(".video-description");
     const btn = document.querySelector(".toggle-btn");
+    const text = btn.querySelector(".text");
 
     btn.addEventListener("click", function () {
-        desc.classList.toggle("expanded");
-        btn.innerText = desc.classList.contains("expanded") ? "Thu gọn" : "Xem thêm";
+        const expanded = desc.classList.toggle("expanded");
+        btn.classList.toggle("expanded", expanded);
+        text.innerText = expanded ? "Rút gọn" : "Xem thêm";
     });
 });
 </script>
