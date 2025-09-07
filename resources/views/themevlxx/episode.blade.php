@@ -37,11 +37,46 @@
                 <span class="video-link">{{ $currentMovie->language }}</span>
             </div>
             <div class="clear"></div>
-            <div class="video-content">
-    <div class="video-description">
+            <style>
+.video-content {
+    position: relative;
+    max-width: 600px; /* chỉnh theo ý */
+}
+
+.video-description {
+    position: relative;
+    overflow: hidden;
+    max-height: 6em; /* khoảng 3 dòng, mày chỉnh theo ý */
+    line-height: 1.5em;
+    transition: max-height 0.3s ease;
+}
+
+.video-description.fade::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3em;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+}
+
+.toggle-btn {
+    display: none;
+    margin-top: 8px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #007bff;
+    font-weight: bold;
+}
+</style>
+
+<div class="video-content">
+    <div class="video-description fade">
         {!! $currentMovie->content !!}
     </div>
-    <button class="toggle-btn" style="display:none; margin-top:5px;">Xem thêm</button>
+    <button class="toggle-btn">Xem thêm</button>
 </div>
 
 <script>
@@ -65,10 +100,14 @@ document.addEventListener("DOMContentLoaded", function () {
             expanded = !expanded;
             if (expanded) {
                 desc.innerText = fullText;
+                desc.classList.remove("fade");
                 btn.innerText = "Thu gọn";
+                desc.style.maxHeight = "none";
             } else {
                 desc.innerText = shortText;
+                desc.classList.add("fade");
                 btn.innerText = "Xem thêm";
+                desc.style.maxHeight = "6em";
             }
         });
     }
