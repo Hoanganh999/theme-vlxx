@@ -37,32 +37,42 @@
                 <span class="video-link">{{ $currentMovie->language }}</span>
             </div>
             <div class="clear"></div>
-            <style>
+            
+    <style>
 .video-content {
     position: relative;
     max-width: 600px; /* chỉnh theo ý */
+    color: #ddd;
+    font-size: 16px;
 }
 
 .video-description {
     position: relative;
     overflow: hidden;
-    max-height: 6em; /* khoảng 3 dòng, mày chỉnh theo ý */
+    max-height: 6em; /* ~3-4 dòng */
     line-height: 1.5em;
     transition: max-height 0.3s ease;
 }
 
-.video-description.fade::after {
+.video-description::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     height: 3em;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+
+.video-description.expanded {
+    max-height: none;
+}
+
+.video-description.expanded::after {
+    display: none;
 }
 
 .toggle-btn {
-    display: none;
     margin-top: 8px;
     cursor: pointer;
     background: none;
@@ -73,7 +83,7 @@
 </style>
 
 <div class="video-content">
-    <div class="video-description fade">
+    <div class="video-description">
         {!! $currentMovie->content !!}
     </div>
     <button class="toggle-btn">Xem thêm</button>
@@ -84,33 +94,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const desc = document.querySelector(".video-description");
     const btn = document.querySelector(".toggle-btn");
 
-    if (!desc) return;
-
-    const fullText = desc.innerText.trim();
-    const maxWords = 80;
-    const words = fullText.split(/\s+/);
-
-    if (words.length > maxWords) {
-        const shortText = words.slice(0, maxWords).join(" ") + "...";
-        desc.innerText = shortText;
-        btn.style.display = "inline-block";
-
-        let expanded = false;
-        btn.addEventListener("click", function () {
-            expanded = !expanded;
-            if (expanded) {
-                desc.innerText = fullText;
-                desc.classList.remove("fade");
-                btn.innerText = "Thu gọn";
-                desc.style.maxHeight = "none";
-            } else {
-                desc.innerText = shortText;
-                desc.classList.add("fade");
-                btn.innerText = "Xem thêm";
-                desc.style.maxHeight = "6em";
-            }
-        });
-    }
+    btn.addEventListener("click", function () {
+        desc.classList.toggle("expanded");
+        btn.innerText = desc.classList.contains("expanded") ? "Thu gọn" : "Xem thêm";
+    });
 });
 </script>
                 <div class="video-tags">
