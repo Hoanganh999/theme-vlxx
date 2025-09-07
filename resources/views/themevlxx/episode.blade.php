@@ -38,7 +38,42 @@
             </div>
             <div class="clear"></div>
             <div class="video-content">
-                <div class="video-description">{!! $currentMovie->content !!}</div>
+    <div class="video-description">
+        {!! $currentMovie->content !!}
+    </div>
+    <button class="toggle-btn" style="display:none; margin-top:5px;">Xem thêm</button>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const desc = document.querySelector(".video-description");
+    const btn = document.querySelector(".toggle-btn");
+
+    if (!desc) return;
+
+    const fullText = desc.innerText.trim();
+    const maxWords = 80;
+    const words = fullText.split(/\s+/);
+
+    if (words.length > maxWords) {
+        const shortText = words.slice(0, maxWords).join(" ") + "...";
+        desc.innerText = shortText;
+        btn.style.display = "inline-block";
+
+        let expanded = false;
+        btn.addEventListener("click", function () {
+            expanded = !expanded;
+            if (expanded) {
+                desc.innerText = fullText;
+                btn.innerText = "Thu gọn";
+            } else {
+                desc.innerText = shortText;
+                btn.innerText = "Xem thêm";
+            }
+        });
+    }
+});
+</script>
                 <div class="video-tags">
                     <div class="actress-tag">
                         {!! count($currentMovie->actors)
