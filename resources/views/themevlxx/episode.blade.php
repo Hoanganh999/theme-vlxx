@@ -97,22 +97,30 @@
 
 /* Danh sách tập */
 .episode-list {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     gap: 8px;
     padding: 0;
     margin: 0;
     list-style: none;
+
+    grid-template-columns: repeat(4, 1fr); /* mặc định: 4 cột (màn hình dọc/mobile) */
 }
+
+/* Khi màn hình rộng (ngang / desktop) thì hiển thị 6 cột */
+@media (min-width: 768px) {
+    .episode-list {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
 .episode-item a {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 60px;
-    padding: 8px 12px;
+    padding: 10px;
     border-radius: 6px;
     background: #1a1a1a;
-    border: 1px solid #fff; /* viền trắng */
+    border: 1px solid #fff;
     color: #ccc;
     font-size: 14px;
     text-decoration: none;
