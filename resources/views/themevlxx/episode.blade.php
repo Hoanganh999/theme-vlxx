@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 .server-tab {
     padding: 8px 16px;
-    border: none;
+    border: 1px solid #fff;
     border-radius: 18px;
     background: #222;
     color: #bbb;
@@ -175,11 +175,11 @@ document.addEventListener("DOMContentLoaded", function () {
     transition: 0.2s;
 }
 .server-tab:hover {
-    background: #ff5722;
+    background: #5D3E34;
     color: #fff;
 }
 .server-tab.active {
-    background: #ff5722;
+    background: #5D3E34;
     color: #fff;
     font-weight: bold;
 }
@@ -201,18 +201,19 @@ document.addEventListener("DOMContentLoaded", function () {
     padding: 8px 12px;
     border-radius: 6px;
     background: #1a1a1a;
+    border: 1px solid #fff; /* viền trắng */
     color: #ccc;
     font-size: 14px;
     text-decoration: none;
     transition: 0.2s;
 }
 .episode-item a:hover {
-    background: #ff5722;
+    background: #5D3E34;
     color: #fff;
     transform: translateY(-2px);
 }
 .episode-item.active a {
-    background: #ff5722;
+    background: #5D3E34;
     color: #fff;
     font-weight: bold;
 }
