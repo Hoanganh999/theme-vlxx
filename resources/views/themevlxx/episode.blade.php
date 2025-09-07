@@ -131,53 +131,57 @@ document.addEventListener("DOMContentLoaded", function () {
             <h4 class="title-h cor4">Danh sách tập</h4>
 
 @foreach ($currentMovie->episodes->sortBy([['server', 'asc']])->groupBy('server') as $server => $data)
-    <!-- Tab chọn server -->
+    <!-- Server tab -->
     <div class="server-tabs">
-        <a class="server-tab active">
+        <button class="server-tab active">
             <i class="fa fa-server"></i> {{ $server }}
-        </a>
+        </button>
     </div>
 
     <!-- Danh sách tập -->
     <div class="player-list-box">
-        <ul class="episode-list">
-            @foreach ($data->sortBy('name', SORT_NATURAL)->groupBy('name') as $name => $item)
-                <li class="episode-item {{ $item->contains($episode) ? 'active' : '' }}">
-                    <a href="{{ $item->sortByDesc('type')->first()->getUrl() }}">
-                        <span>{{ $name }}</span>
-                        @if ($item->contains($episode))
-                            <em class="playing"><i></i><i></i><i></i><i></i></em>
-                        @endif
-                    </a>
-                </li>
-            @endforeach
-        </ul>
+        <div class="anthology-list select-a">
+            <div class="anthology-list-box">
+                <ul class="episode-list">
+                    @foreach ($data->sortBy('name', SORT_NATURAL)->groupBy('name') as $name => $item)
+                        <li class="episode-item {{ $item->contains($episode) ? 'active' : '' }}">
+                            <a href="{{ $item->sortByDesc('type')->first()->getUrl() }}">
+                                <span>{{ $name }}</span>
+                                @if ($item->contains($episode))
+                                    <em class="playing"><i></i><i></i><i></i><i></i></em>
+                                @endif
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
     </div>
 @endforeach
 
 <style>
-/* Tabs server */
+/* Server tabs */
 .server-tabs {
-    margin-bottom: 10px;
+    margin: 15px 0 10px;
 }
 .server-tab {
-    display: inline-block;
-    padding: 6px 14px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 18px;
     background: #222;
-    border-radius: 6px;
-    margin-right: 8px;
-    color: #ccc;
+    color: #bbb;
     font-size: 14px;
-    transition: 0.2s;
     cursor: pointer;
+    transition: 0.2s;
 }
 .server-tab:hover {
-    background: #ff6600;
+    background: #ff5722;
     color: #fff;
 }
 .server-tab.active {
-    background: #ff6600;
+    background: #ff5722;
     color: #fff;
+    font-weight: bold;
 }
 
 /* Danh sách tập */
@@ -189,35 +193,42 @@ document.addEventListener("DOMContentLoaded", function () {
     margin: 0;
     list-style: none;
 }
-.episode-item {
-    flex: 0 0 auto;
-}
 .episode-item a {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
     padding: 8px 12px;
+    border-radius: 6px;
     background: #1a1a1a;
     color: #ccc;
     font-size: 14px;
-    border-radius: 4px;
     text-decoration: none;
     transition: 0.2s;
 }
 .episode-item a:hover {
-    background: #ff6600;
+    background: #ff5722;
     color: #fff;
+    transform: translateY(-2px);
 }
 .episode-item.active a {
-    background: #ff6600;
+    background: #ff5722;
     color: #fff;
+    font-weight: bold;
 }
 
-/* Icon tập đang phát */
+/* Icon sóng tập đang phát */
+.playing {
+    display: flex;
+    margin-left: 6px;
+}
 .playing i {
-    display: inline-block;
+    display: block;
     width: 3px;
-    height: 10px;
+    height: 12px;
     margin: 0 1px;
     background: #fff;
+    border-radius: 2px;
     animation: equalizer 1s infinite ease-in-out;
 }
 .playing i:nth-child(2) { animation-delay: 0.2s; }
