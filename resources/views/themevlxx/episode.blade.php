@@ -228,7 +228,7 @@
     
 </div>
 
-    <h4 class="title-h cor4">Nội dung phim:</h4>
+    <h4 class="title-h cor4" style="margin-top: 30px;">Nội dung phim:</h4>
     
     <div class="video-description">
         {!! $currentMovie->content !!}
