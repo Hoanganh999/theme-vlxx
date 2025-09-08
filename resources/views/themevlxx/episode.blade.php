@@ -39,7 +39,7 @@
             <div class="clear"></div>
             
     <div class="video-content">
-            <h4 class="title-h cor4">Danh sách tập:</h4>
+            <h4 class="title-h cor4" style="margin-top: 30px;">Danh sách tập:</h4>
 
 @foreach ($currentMovie->episodes->sortBy([['server', 'asc']])->groupBy('server') as $server => $data)
     <!-- Server tab -->
@@ -224,9 +224,7 @@
     transform: rotate(180deg);
 }
 </style>
-<div>
-    
-</div>
+
 
     <h4 class="title-h cor4" style="margin-top: 30px;">Nội dung phim:</h4>
     
